@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends Edit</title>
+    <style>.div1 { display: inline-block; }</style>
+</head>
+<body>
+<hr/>
+<h3>Your friends:</h3>
+<hr/>
+<div th:each="friend : ${friends}">
+    <div class="div1"><a th:href="@{/user/{myId}/friends/{id}(id=${friend.getId()}, myId=${myId})}"
+       th:text="${'[' + friend.getId()+ '] ' + friend.getName()}">user</a>
+    </div>
+    <div class="div1">
+    <form th:method="PATCH" th:action="@{/user/{myId}/friends/{id}(id=${friend.getId()}, myId=${myId})}">
+        <input type="submit" value="Delete">
+    </form>
+
+    </div>
+</div>
+<div th:if="${friends.isEmpty()}">
+    <span>You don&#39;t have any friends</span>
+</div>
+<hr/>
+<a th:href="@{/user/{myId}/friends(myId = ${myId})}">Done</a>
+<hr/>
+</body>
+</html>

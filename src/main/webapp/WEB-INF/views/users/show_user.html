@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User</title>
+</head>
+<body>
+<hr/>
+<h3>Your pofile:</h3>
+<hr/>
+<span>Your name: </span>
+<span th:text="${'[' + user.getId()+ '] ' + user.getName()}"></span>
+<br/>
+<span>Your location: </span>
+<span th:text="${user.getLocation()}"></span>
+<br/>
+<div th:if="${user.getMoveDate()!=null}">
+    <span>Your move date: </span>
+    <span th:text="${user.getMoveDate()}"></span>
+    <br/>
+    <span>Your move point: </span>
+    <span th:text="${user.getMovePoint()}"></span>
+</div>
+<div th:unless="${user.getMoveDate()!=null}">
+    <span>You don't have any plans</span>
+</div>
+<a th:href="@{/user/{myId}/edit(myId=${user.getId()})}">Edit profile </a>
+<hr/>
+<a th:href="@{/user/{myId}/friends(myId=${user.getId()})}">Friends list </a>
+<hr/>
+</body>
+</html>

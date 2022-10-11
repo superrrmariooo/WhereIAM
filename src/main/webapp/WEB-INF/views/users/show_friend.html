@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<hr/>
+<p th:text="${'[' + friend.getId()+ '] ' + friend.getName()}">VALUE</p>
+<form th:method="DELETE" th:action="@{/user/{myId}/friends/{id}(id=${friend.getId()}, myId=${myId})}">
+    <input type="submit" value="Delete">
+</form>
+<hr/>
+<a th:href="@{/user/{myId}/friends(myId = ${myId})}">Friends list</a>
+<hr/>
+</body>
+</html>

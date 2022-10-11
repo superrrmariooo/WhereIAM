@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add friend</title>
+</head>
+<body>
+<hr/>
+<h3>Add friend</h3>
+<hr/>
+<span>Your ID: <span th:text="${user.getId}" ></span></span>
+<br/>
+<form th:method="PATCH" th:action="@{/user/{myId}/add-patch(myId=${user.getId()})}" th:object="${friend}">
+    <label for="friendId">Enter your friend's ID: </label>
+    <input type="text" th:field="*{id}" id="friendId"/>
+    <br/>
+    <input type="submit" value="Add"/>
+</form>
+</body>
+</html>
